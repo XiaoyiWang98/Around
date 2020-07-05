@@ -1,0 +1,13 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/golang:1.9
+    working_directory: /go/src/github.com/laioffer/Around
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: |
+          docker build -t seanspace/around .
+          docker login -u="$seanspace" -p="$Aa970318111@"
+          docker push seanspace/around
